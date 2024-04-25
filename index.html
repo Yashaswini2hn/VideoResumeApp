@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Resume App</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <h1>Video Resume App</h1>
+    </header>
+    <div class="overlay">Welcome!</div> 
+    <div class="container">
+        <div class="sidebar">
+            
+            <button class="sidebar-btn" id="textBtn" title="Text"><i class="fas fa-font"></i></button>
+            
+            <input type="file" id="uploadInput" accept="video/*" style = "display: none;">
+            <button class="sidebar-btn" id="uploadBtn" title="Upload" onclick="openUploadDialog()"><i class="fas fa-upload"></i></button>
+
+            
+            <button class="sidebar-btn" id="recordBtn" title="Record"><i class="fas fa-record-vinyl"></i></button>
+            
+            <button class="sidebar-btn" id="settingsBtn" title="Video Settings" onclick="loadVideo()"><i class="fas fa-cog"></i></button>
+
+            
+            <button class="sidebar-btn" id="botBtn" title="AI Bot"><i class="fas fa-robot"></i></button>
+
+           
+        </div>
+         
+        <input type="file" id="fileInput" style="display: none;">
+    </div>
+    
+    <div id="recordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRecordModal()">&times;</span>
+            <h2>Start Recording</h2>
+            <video id="videoElement" autoplay></video>
+            <button id = "startRecordingBtn" onclick="startRecording()">Start Recording</button>
+            <button id="stopRecordingBtn" onclick="stopRecording()">Stop Recording</button>
+        </div>
+    </div>    
+   
+    <div id="botModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBotModal()">&times;</span>
+            <div class="chat-container">
+                <div class="chat-box" id="chatBox">
+                    <div class="chat-message">
+                        <p class="bot-message">Hi there! My name is AI Bot. How can I assist you?</p>
+                    </div>
+                </div>
+                <input type="text" id="userInput" class="input-box" placeholder="Ask anything!">
+                <span id="audioIcon" onclick="startRecording()">🎙️</span>
+                <span id="photoIcon" onclick="openUploadDialog()">📷</span>
+            </div>
+        </div>
+    </div>  
+    
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettingsModal()">&times;</span>
+            <video id="myVideo" width="640" height="360" controls>
+                <source id="videoSource" src="" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+                <label for="resolution">Resolution:</label>
+                <select id="resolution">
+                    <option value="360">360p</option>
+                    <option value="480">480p</option>
+                    <option value="720">720p</option>
+                    <option value="1080">1080p</option>
+                </select>
+                <input type="range" id="resolutionSlider" min="360" max="1080" step="1" value="720">
+           
+            <div>
+                <label for="opacity">Opacity:</label>
+                <input type="range" id="opacitySlider" min="0" max="100" step="1" value="100">
+            </div>
+          
+            <div>
+                <label for="canvas">Canvas:</label>
+                <select id="canvas">
+                    <option value="fit">Fit</option>
+                    <option value="1:1">1:1</option>
+                    <option value="4:5">4:5</option>
+                    <option value="9:16">9:16</option>
+                    <option value="16:9">16:9</option>
+                    <option value="3:4">3:4</option>
+                </select>
+            </div>
+        </div>
+    </div>    
+        
+    <script src="script.js"></script>
+</body>
+</html>
